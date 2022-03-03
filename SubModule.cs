@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
@@ -80,6 +81,17 @@ namespace PlayerGovernor
                     __result = Hero.MainHero;
                 }
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(ChangeGovernorAction), "ApplyByGiveUpCurrent")]
+
+    public class ChangeGovernorActionPatch
+    {
+        public static bool Prefix(Hero governor)
+        {
+            if (governor == Hero.MainHero) return false;
+            return true;
         }
     }
 }
