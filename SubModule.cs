@@ -86,7 +86,7 @@ namespace PlayerGovernor
         }
     }
 
-    [HarmonyPatch(typeof(ChangeGovernorAction), "ApplyByGiveUpCurrent")]
+    [HarmonyPatch(typeof(ChangeGovernorAction), "ApplyGiveUpInternal")]
 
     public class ChangeGovernorActionPatch
     {
